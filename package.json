@@ -1,7 +1,7 @@
 {
   "name": "hubot-loggly",
   "description": "A hubot script to query the Loggly API",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": "efa <team@efa-gmbh.com>",
   "license": "MIT",
 
