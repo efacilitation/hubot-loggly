@@ -21,6 +21,5 @@ Then add **hubot-loggly** to your `external-scripts.json`:
 ## Sample Interaction
 
 ```
-user1>> hubot hello
-hubot>> hello!
+user1>> hubot loggly get from -5d until now
 ```
