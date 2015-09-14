@@ -13,10 +13,22 @@
 #
 # Author:
 #   efa <team@efa-gmbh.com>
+Util = require 'util'
+
+makeLogglyRequest = (robot, path, callback) ->
+  robot.http "https://#{process.env.HUBOT_LOGGLY_ACCOUNT}.loggly.com#{path}"
+  .header 'Accept', 'application/json'
+  .auth process.env.HUBOT_LOGGLY_USERNAME, process.env.HUBOT_LOGGLY_PASSWORD
+  .get() (error, response, body) ->
+    try
+      callback JSON.parse body
+    catch
+      callback {}
 
 module.exports = (robot) ->
-  robot.respond /hello/, (res) ->
-    res.reply "hello!"
 
-  robot.hear /orly/, ->
-    res.send "yarly"
+  robot.respond /loggly get from ([^\s]+?) until ([^\s]+?)$/, (response) ->
+    makeLogglyRequest robot, "/apiv2/search?q=*&from=#{response.match[1]}&until=#{response.match[2]}&size=50", (searchRequestData) ->
+      makeLogglyRequest robot, "/apiv2/events?rsid=#{searchRequestData.rsid.id}", (eventData) ->
+        eventData.events.forEach (event) ->
+          response.send "New Loggly event: #{Util.inspect event}"
