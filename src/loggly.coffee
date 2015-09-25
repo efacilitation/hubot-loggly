@@ -27,7 +27,7 @@ makeLogglyRequest = (robot, path, callback) ->
 
 module.exports = (robot) ->
 
-  robot.respond /loggly get from ([^\s]+?) until ([^\s]+?)$/, (response) ->
+  robot.hear /loggly get from ([^\s]+?) until ([^\s]+?)$/, (response) ->
     makeLogglyRequest robot, "/apiv2/search?q=*&from=#{response.match[1]}&until=#{response.match[2]}&size=50", (searchRequestData) ->
       makeLogglyRequest robot, "/apiv2/events?rsid=#{searchRequestData.rsid.id}", (eventData) ->
         eventData.events.forEach (event) ->
