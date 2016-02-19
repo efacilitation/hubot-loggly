@@ -1,11 +1,7 @@
 language: node_js
 node_js:
-  - "0.12"
-  - "0.10"
-  - "iojs"
-sudo: false
-cache:
-  directories:
-    - node_modules
+- '5.6'
 notifications:
-  email: false
+  hipchat:
+    rooms:
+      secure: FV4j+VPD2+YeYSEa0gcteoEnzUqeu8chEOFsxZU/W7ExpEE4CyWMJFtAUda7xfjznb9XPkDICjzwoQljUfHv8MQo6kHrzKpbhB2OaYc/oIpX2t0rq/gkoCvZOS2qckA+IHrEVQqlQZ1D/BDz1v3/f3o34yzeWomXoTp5HY3ohUVL6Dmlcr7kB3mjo4AVhvslKAL+HfEx0aKEZ1N5bSaUlSLV2AJw9sXkL+3qOaAkeeoITZfl3aehdO3DMnBQh7R61Kb44iCY2jEi2XZFIaoW8rXmvSxJVWVav5qEfpZIymIh08Db2RQTUAJlfsiT8wn/QhHyIYsyIwSiVZd/eyNYLeWfq5wKUpfzgIRG3Ki72VgOb+/jYN+IY8vnPDciKgBeyOFEW8LYqk+ibbnsW9UjnEIRtDR7cfYuAKKfjLcker6KYa41fIqqkAmjej2U8yUCyHe989fdWAgS9JFGHcuVfo2Ru+ueVjsTVfTwzaBatfq34ygkNh3jZNoRUC8GcCTZin/72/4M/VNUuTdRxfizcccdjjXMRj+bhzWoJ0XJaCa8j1XcAPVXgjtEVunxyJeTLe7f0LPT+T7YpP4J6KrxHivKwVgr75DC+csP1msGLnm7J+GcgJletFkEtNQxGUgAbhuKcaTvoxxzsd3VMLjNSmzczKI2ugtKiu3mklhSKLE=
