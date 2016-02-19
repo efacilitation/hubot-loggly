@@ -22,8 +22,9 @@ makeLogglyRequest = (robot, path, callback) ->
   .get() (error, response, body) ->
     try
       callback JSON.parse body
-    catch
+    catch error
       callback {}
+
 
 module.exports = (robot) ->
 

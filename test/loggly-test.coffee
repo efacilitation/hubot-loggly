@@ -12,5 +12,5 @@ describe 'loggly', ->
 
     require('../src/loggly')(@robot)
 
-  it 'registers a respond listener', ->
-    expect(@robot.respond).to.have.been.calledWith(/loggly get from (.*?) until (.*?)/)
+  it 'registers a hear listener', ->
+    expect(@robot.hear).to.have.been.calledWith /loggly get from ([^\s]+?) until ([^\s]+?)$/
