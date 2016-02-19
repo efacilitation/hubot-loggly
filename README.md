@@ -1,4 +1,4 @@
-# hubot-loggly
+# hubot-loggly [![Build Status](https://travis-ci.org/efacilitation/hubot-loggly.svg?branch=master)](https://travis-ci.org/efacilitation/hubot-loggly)
 
 A hubot script to query the Loggly API
 
