@@ -20,6 +20,16 @@ Then add **hubot-loggly** to your `external-scripts.json`:
 
 ## Sample Interaction
 
+One time query:
+
 ```
 user1>> hubot loggly get from -5d until now
+```
+
+Continuous query (using `setInterval`):
+
+```
+user1>> hubot loggly get every 60 seconds
+
+user1>> hubot loggly deactivate interval
 ```
