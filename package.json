@@ -4,25 +4,17 @@
   "version": "0.3.0",
   "author": "efa <team@efa-gmbh.com>",
   "license": "MIT",
-
   "keywords": "hubot, hubot-scripts",
-
   "repository": {
     "type": "git",
     "url": "git://github.com/hubot-scripts/hubot-loggly.git"
   },
-
   "bugs": {
     "url": "https://github.com/hubot-scripts/hubot-loggly/issues"
   },
-
-  "dependencies": {
-  },
-
   "peerDependencies": {
     "hubot": "2.x"
   },
-
   "devDependencies": {
     "chai": "3.5.0",
     "coffee-script": "1.10.0",
@@ -36,9 +28,7 @@
     "sinon": "1.17.3",
     "sinon-chai": "2.8.0"
   },
-
   "main": "index.coffee",
-
   "scripts": {
     "test": "grunt test"
   }
