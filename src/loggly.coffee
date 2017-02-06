@@ -13,6 +13,7 @@
 #
 # Author:
 #   efa <team@efa-gmbh.com>
+
 Util = require 'util'
 
 
@@ -33,13 +34,19 @@ getLogglyEvents = (robot, from, to, callback) ->
       callback eventData
 
 
+logEvents = (events, response) ->
+  events.forEach (event) ->
+    response.send "New Loggly event: #{Util.inspect event}"
+
+
 module.exports = (robot) ->
 
   robot.hear /loggly get from ([^\s]+?) until ([^\s]+?)$/, (response) ->
     getLogglyEvents robot, response.match[1], response.match[2], (eventData) ->
-      eventData.events.forEach (event) ->
-        response.send "New Loggly event: #{Util.inspect event}"
-
+      if eventData.events instanceof Array
+        logEvents eventData.events, response
+      else
+        response.send "Loggly event data malformed #{Util.inspect eventData}"
 
   intervalId = null
   robot.hear /loggly get every ([^\s]+?) seconds/, (response) ->
@@ -47,8 +54,12 @@ module.exports = (robot) ->
     intervalTimeoutMs = seconds * 1000
     intervalId = setInterval ->
       getLogglyEvents robot, "-#{seconds}s", 'now', (eventData) ->
-        eventData.events.forEach (event) ->
-          response.send "New Loggly event: #{Util.inspect event}"
+        if eventData.events instanceof Array
+          logEvents eventData.events, response
+        else
+          response.send "Loggly event data malformed #{Util.inspect eventData}"
+
+
     , intervalTimeoutMs
     response.send "Loggly interval activated for every #{intervalTimeoutMs}ms"
 
